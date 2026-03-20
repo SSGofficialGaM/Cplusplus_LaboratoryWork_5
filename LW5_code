@@ -1,0 +1,70 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main() {
+    //Task 1
+    float x0;
+    
+    cout << "Enter 5 different values of x0: " << endl;
+    
+    for (float x = 1; x <= 5; x++) {
+        cout << x << ". ";
+        cin >> x0;
+        
+        float y = pow(sin(x0), 5) + abs(5*x0 - 1.5);
+        cout << setprecision(8) << y << endl;
+    }
+    
+    //Task 2
+    int number;
+    long product = 1;
+    
+    cout << "Enter 10 natural numbers: " << endl;
+    
+    for (int logPar = 1; logPar <= 10; logPar++) {
+        cout << logPar << ". ";
+        cin >> number;
+        
+        if (number > 0) {
+            product *= number;
+        }
+        else {
+            cout << "Error! The entered number is NOT natural (but it must be one).";
+            logPar--;
+            continue;
+        }
+    }
+    
+    cout << "The product of 10 natural numbers is: " << product;
+    
+    //Task 3
+    float a, b, h;
+    
+    cout << "Enter the low limit of the function segment: ";
+    cin >> a;
+    
+    cout << "Enter the high limit of the function segment: ";
+    cin >> b;
+    
+    cout << "Enter the function step you want to perform: ";
+    cin >> h;
+    
+    cout << "------------------------------\n" << ":          X          ::          Y          :\n" << "------------------------------\n";
+    
+    float x = a;
+    
+    while (x <= b) {
+        if (cos(x) >= 0) {
+            float y = sqrt(cos(x)) + sin(x);
+            
+            cout << ":          " << x << "          ::          " << setprecision(4) << y << "          :\n" << "------------------------------\n";
+            
+            x += h;
+        }
+        else {
+            cout << "Invalid segment limit (it doesn't suit the area of possible values)! Try again next time."; break;
+        }
+    }
+}
